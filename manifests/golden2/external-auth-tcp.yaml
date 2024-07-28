@@ -10,9 +10,25 @@ spec:
   rules:
   - when:
     - key: connection.sni
-      values: ["www.httpbin.org","www.cnn.com"]
+      values:
+      - "www.httpbin.org"
+      - "www.cnn.com"
     - key: source.principal
       values:
       - "istio-b.omegaworld.net/ns/default/sa/sleep"
       - "istio-b.omegaworld.net/ns/default/sa/swissknife"
+  - when:
+    - key: connection.sni
+      values: 
+      - "www.google.com"
+    - key: source.principal
+      values: 
+      - "istio-b.omegaworld.net/ns/myapp/sa/swissknife"
+  - when:
+    - key: connection.sni
+      values:
+      - "mysql-a.omegaworld.net"
+    - key: source.principal
+      values:
+      - "istio-b.omegaworld.net/ns/default/sa/mysql-client"
   action: ALLOW
