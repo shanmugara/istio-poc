@@ -1,0 +1,14 @@
+apiVersion: networking.istio.io/v1
+kind: ServiceEntry
+metadata:
+  name: proxy-se
+  namespace: istio-system
+spec:
+  hosts:
+  - squid-a-01.omegaworld.net 
+  ports:
+  - number: 3128
+    name: tls
+    protocol: TLS
+  location: MESH_EXTERNAL
+  resolution: DNS

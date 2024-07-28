@@ -1,0 +1,18 @@
+apiVersion: security.istio.io/v1
+kind: AuthorizationPolicy
+metadata:
+  name: egress-auth-tcp
+  namespace: istio-system
+spec:
+  selector:
+    matchLabels:
+      istio: egressgateway
+  rules:
+  - when:
+    - key: connection.sni
+      values: ["www.httpbin.org","www.cnn.com"]
+    - key: source.principal
+      values:
+      - "istio-b.omegaworld.net/ns/default/sa/sleep"
+      - "istio-b.omegaworld.net/ns/default/sa/swissknife"
+  action: ALLOW
