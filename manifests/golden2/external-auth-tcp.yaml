@@ -31,4 +31,11 @@ spec:
     - key: source.principal
       values:
       - "istio-b.omegaworld.net/ns/default/sa/mysql-client"
+  - when:
+    - key: connection.sni
+      values:
+      - "omega-mysql-1.omegaworld.net"
+    - key: source.principal
+      values:
+      - "istio-b.omegaworld.net/ns/default/sa/mysql-client"
   action: ALLOW
