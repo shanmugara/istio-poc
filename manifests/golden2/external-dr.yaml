@@ -39,3 +39,13 @@ spec:
         tls:
           mode: ISTIO_MUTUAL
           sni: mysql-a.omegaworld.net 
+  - name: mysql2-eg
+    trafficPolicy:
+      loadBalancer:
+        simple: ROUND_ROBIN
+      portLevelSettings:
+      - port:
+          number: 443
+        tls:
+          mode: ISTIO_MUTUAL
+          sni: omega-mysql-1.omegaworld.net
