@@ -1,0 +1,16 @@
+apiVersion: security.istio.io/v1
+kind: AuthorizationPolicy
+metadata:
+  name: egress-auth-tcp-http
+  namespace: istio-system
+spec:
+  selector:
+    matchLabels:
+      istio: egressgateway
+  rules:
+  - to:
+    - operation:
+        hosts:
+        - "www.httpbin.org"
+        - "www.cnn.com"
+  action: ALLOW

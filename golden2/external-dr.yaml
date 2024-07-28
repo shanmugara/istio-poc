@@ -1,0 +1,41 @@
+apiVersion: networking.istio.io/v1
+kind: DestinationRule
+metadata:
+  name: egressgateway
+  namespace: istio-system
+spec:
+  host: istio-egressgateway.istio-system.svc.cluster.local
+  subsets:
+  - name: httpbin-eg-http
+    trafficPolicy:
+      portLevelSettings:
+      - port: 
+          number: 80
+        tls:
+          mode: ISTIO_MUTUAL
+          sni: www.httpbin.org
+  - name: httpbin-eg
+    trafficPolicy:
+      tls:
+        mode: ISTIO_MUTUAL 
+        sni: www.httpbin.org
+  - name: cnn-eg
+    trafficPolicy:
+      tls:
+        mode: ISTIO_MUTUAL
+        sni: www.cnn.com
+  - name: google-eg
+    trafficPolicy:
+      tls:
+        mode: ISTIO_MUTUAL
+        sni: www.google.com
+  - name: mysql-eg
+    trafficPolicy:
+      loadBalancer:
+        simple: ROUND_ROBIN
+      portLevelSettings:
+      - port:
+          number: 443
+        tls:
+          mode: ISTIO_MUTUAL
+          sni: mysql-a.omegaworld.net 

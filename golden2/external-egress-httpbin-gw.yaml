@@ -1,0 +1,25 @@
+apiVersion: networking.istio.io/v1
+kind: Gateway
+metadata:
+  name: external-egress-httpbin
+  namespace: istio-system
+spec:
+  selector:
+    istio: egressgateway
+  servers:
+  - port:
+      number: 80
+      name: http-port
+      protocol: HTTP
+    hosts:
+    - '*.httpbin.org'
+    tls:
+      httpsRedirect: true
+  - port:
+      number: 443
+      name: https
+      protocol: TLS
+    hosts:
+    - '*.httpbin.org' 
+    tls:
+      mode: ISTIO_MUTUAL  # PASSTHROUGH
