@@ -13,6 +13,7 @@ spec:
       values:
       - "www.httpbin.org"
       - "www.cnn.com"
+      - "omegaapp-2.omegaworld.net"
     - key: source.principal
       values:
       - "istio-b.omegaworld.net/ns/default/sa/sleep"
