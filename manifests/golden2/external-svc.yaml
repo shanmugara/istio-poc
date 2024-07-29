@@ -1,0 +1,19 @@
+apiVersion: networking.istio.io/v1
+kind: ServiceEntry
+metadata:
+  name: external-sites
+  namespace: istio-system
+spec:
+  hosts:
+  - www.httpbin.org
+  - www.cnn.com
+  - omegaapp-2.omegaworld.net
+  ports:
+  - number: 80
+    name: http-port
+    protocol: HTTP
+  - number: 443
+    name: tls
+    protocol: TLS
+  resolution: DNS
+  location: MESH_EXTERNAL

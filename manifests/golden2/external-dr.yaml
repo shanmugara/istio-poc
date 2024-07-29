@@ -49,3 +49,8 @@ spec:
         tls:
           mode: ISTIO_MUTUAL
           sni: omega-mysql-1.omegaworld.net
+  - name: omegaapp2-eg
+    trafficPolicy:
+      tls:
+        mode: ISTIO_MUTUAL
+        sni: omegaapp-2.omegaworld.net

@@ -1,0 +1,9 @@
+apiVersion: networking.istio.io/v1
+kind: DestinationRule
+metadata:
+  name: omegaapp2
+  namespace: istio-system
+spec:
+  host: omegaapp-2.omegaworld.net
+  subsets:
+  - name: omegaapp2-tcp
