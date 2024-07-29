@@ -45,3 +45,4 @@ spec:
         host: omegaapp-2.omegaworld.net
         port:
           number: 443
+        subset: omegaapp2-tcp
