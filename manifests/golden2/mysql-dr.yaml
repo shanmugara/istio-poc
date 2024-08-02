@@ -8,9 +8,17 @@ spec:
   subsets:
   - name: mysql-tcp
     trafficPolicy:
+      outlierDetection:
+        splitExternalLocalOriginErrors: true
+        consecutiveLocalOriginFailures: 1
+        consecutiveGatewayErrors: 1
+        consecutive5xxErrors: 1
+        interval: 5s
+        baseEjectionTime: 5m
+        maxEjectionPercent: 60
       loadBalancer:
-        simple: ROUND_ROBIN
+        simple: LEAST_REQUEST
       connectionPool:
         tcp:
           maxConnections: 100
-          connectTimeout: 30s
+          connectTimeout: 10s
