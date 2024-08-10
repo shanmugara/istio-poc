@@ -1,0 +1,40 @@
+package envoy.authz
+
+default allow = false
+
+# Allow rule that checks specific principals for specific SNIs
+allow {
+    print("input:", input)
+    print("Evaluating for SNI:", input.attributes.destination.service, "and Principal:", input.attributes.source.principal)
+    is_allowed_site_for_principal(input.attributes.destination.service, input.attributes.source.principal)
+}
+
+# Function to check if a principal is allowed to access a specific SNI
+is_allowed_site_for_principal(sni, principal) {
+    sites_principals[sni][_] == principal
+}
+
+# Mapping of allowed SNIs to their corresponding allowed principals
+sites_principals := {
+    "www.httpbin.org": [
+        "spiffe://istio-b.omegaworld.net/ns/default/sa/sleep",
+        "spiffe://istio-b.omegaworld.net/ns/default/sa/swissknife",
+    ],
+    "www.cnn.com": [
+        "spiffe://istio-b.omegaworld.net/ns/default/sa/sleep",
+        "spiffe://istio-b.omegaworld.net/ns/default/sa/swissknife",
+    ],
+    "omegaapp-2.omegaworld.net": [
+        "spiffe://istio-b.omegaworld.net/ns/default/sa/sleep",
+        "spiffe://istio-b.omegaworld.net/ns/default/sa/swissknife",
+    ],
+    "www.google.com": [
+        "spiffe://istio-b.omegaworld.net/ns/myapp/sa/swissknife",
+    ],
+    "mysql-a.omegaworld.net": [
+        "spiffe://istio-b.omegaworld.net/ns/default/sa/mysql-client",
+    ],
+    "omega-mysql-1.omegaworld.net": [
+        "spiffe://istio-b.omegaworld.net/ns/default/sa/mysql-client",
+    ],
+}

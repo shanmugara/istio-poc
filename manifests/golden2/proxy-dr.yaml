@@ -18,3 +18,9 @@ spec:
         protocol: CONNECT
         targetPort: 443
         targetHost: www.cnn.com
+  - name: google-proxy
+    trafficPolicy:
+      tunnel:
+        protocol: CONNECT
+        targetPort: 443
+        targetHost: www.google.com

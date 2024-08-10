@@ -31,24 +31,32 @@ spec:
         sni: www.google.com
   - name: mysql-eg
     trafficPolicy:
-      loadBalancer:
-        simple: ROUND_ROBIN
-      portLevelSettings:
-      - port:
-          number: 443
-        tls:
-          mode: ISTIO_MUTUAL
-          sni: mysql-a.omegaworld.net 
+      tls:
+        mode: ISTIO_MUTUAL
+        sni: mysql-a.omegaworld.net
+        #    trafficPolicy:
+        #      loadBalancer:
+        #        simple: ROUND_ROBIN
+        #      portLevelSettings:
+        #      - port:
+        #          number: 443
+        #        tls:
+        #          mode: ISTIO_MUTUAL
+        #          sni: mysql-a.omegaworld.net 
   - name: mysql2-eg
     trafficPolicy:
-      loadBalancer:
-        simple: ROUND_ROBIN
-      portLevelSettings:
-      - port:
-          number: 443
-        tls:
-          mode: ISTIO_MUTUAL
-          sni: omega-mysql-1.omegaworld.net
+      tls:
+        mode: ISTIO_MUTUAL
+        sni: omega-mysql-1.omegaworld.net
+        #    trafficPolicy:
+        #      loadBalancer:
+        #        simple: ROUND_ROBIN
+        #      portLevelSettings:
+        #      - port:
+        #          number: 443
+        #        tls:
+        #          mode: ISTIO_MUTUAL
+        #          sni: omega-mysql-1.omegaworld.net
   - name: omegaapp2-eg
     trafficPolicy:
       tls:

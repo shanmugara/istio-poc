@@ -1,0 +1,35 @@
+apiVersion: spire.spiffe.io/v1alpha1
+kind: ClusterFederatedTrustDomain
+metadata:
+  name: istio-a
+spec:
+  trustDomain: istio-a.omegaworld.net
+  bundleEndpointURL: https://istio-a.omegaworld.net:31468
+  bundleEndpointProfile:
+    type: https_spiffe
+    endpointSPIFFEID: spiffe://istio-a.omegaworld.net/spire/server
+  trustDomainBundle: |-
+    {
+    "keys": [
+        {
+            "use": "x509-svid",
+            "kty": "EC",
+            "crv": "P-256",
+            "x": "f7SmPclV2zWrbyMR9SaS_tH_9xHoQfCNk9bayH4oDmk",
+            "y": "KNeQE77EgmJhnZ4e0aTtXv8VvvwPoR26-tgzLoAcWLM",
+            "x5c": [
+                "MIICCzCCAbCgAwIBAgIQCaySDrCJHnhn6jvLk4HXgjAKBggqhkjOPQQDAjBPMQswCQYDVQQGEwJVUzEPMA0GA1UEChMGU1BJRkZFMS8wLQYDVQQFEyYxMjg1OTA4OTQxNzM2Mzc3MDAwOTc1OTcwNTgyMjQ0Njg2ODM1NDAeFw0yNDA3MjIyMjA1MDBaFw0yNDA3MjMyMjA1MTBaME8xCzAJBgNVBAYTAlVTMQ8wDQYDVQQKEwZTUElGRkUxLzAtBgNVBAUTJjEyODU5MDg5NDE3MzYzNzcwMDA5NzU5NzA1ODIyNDQ2ODY4MzU0MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEf7SmPclV2zWrbyMR9SaS/tH/9xHoQfCNk9bayH4oDmko15ATvsSCYmGdnh7RpO1e/xW+/A+hHbr62DMugBxYs6NuMGwwDgYDVR0PAQH/BAQDAgEGMA8GA1UdEwEB/wQFMAMBAf8wHQYDVR0OBBYEFK6uIzcWH9hbTFq4MS602qJ9/bmaMCoGA1UdEQQjMCGGH3NwaWZmZTovL2lzdGlvLWEub21lZ2F3b3JsZC5uZXQwCgYIKoZIzj0EAwIDSQAwRgIhAJoBpcfBXTvopEOkkyTKK+Xfwslow48khCV69SG27qiaAiEAqMs5rvn7K/RLWV+B1R/9MwidIQOYH6HKXtk1vixcH/w="
+            ]
+        },
+        {
+            "use": "jwt-svid",
+            "kty": "EC",
+            "kid": "SOUkAOuezLXs2kTvRDMAqwMi3v97FvZg",
+            "crv": "P-256",
+            "x": "WD1elC4wwbUutYO5-btkTnsAaJzejKGq789ze5Zk5a4",
+            "y": "jWB6Rudr-Mmqi7fiDML-3Xp-Nue5pcK4TVHP6DyhEXY"
+        }
+    ],
+    "spiffe_sequence": 1,
+    "spiffe_refresh_hint": 300
+    }
