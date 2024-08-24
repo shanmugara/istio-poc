@@ -8,8 +8,9 @@ spec:
   - mysql-a.omegaworld.net
   endpoints:
   - address: 192.168.0.145
+  - address: 192.168.0.190
   addresses:
-  - 192.168.0.145/32
+  - 192.168.0.0/24
   ports:
   - number: 3306
     name: tcp-port-mesh
