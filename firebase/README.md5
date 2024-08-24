@@ -1,0 +1,4 @@
+ install the require pypi module: pip install pyrebase4
+login using the configjwt function using registered email and password.
+Retuend object contains the jwt. Pass the jwt as Bearer in auth headers.
+
