@@ -38,3 +38,4 @@
     - Traffic policy template in SPEC: should contain all trafficPolicy settings, such as tls mode, outlier detection, load balancing, etc.
     - Can we default most of these?
     - Should ISTIO_MUTAL be the default?
+..
