@@ -1,11 +1,18 @@
 ## Steps to publish a new ingress endpoint
 
+### CedarACL derived intent for Istio: 
+TBD (need to break down the intent and atrributes)
+
+
 1. Deploy the application in kubernetes namespace. (we are injecting istio sidecar in the deployment)
 2. Create a new service for the application.
 3. Istio steps:
     1. Create a new virtual service for the application.
     2. Create a new gateway for the application.
     3. Create a new destination rule for the application.
+    4. Create authorization policy for the application.
+    5. Peer authentication policy for the application. 
+    6. Create requestAuthentication policy for the application.
 
 4. Create new gateway step:
     1. What information do we need to create a new gateway?
@@ -42,6 +49,13 @@
     - Traffic policy template in SPEC: should contain all trafficPolicy settings, such as tls mode, outlier detection, subsets, load balancing, etc.
     - Can we default most of the trafficPolicy options?
     - Should ISTIO_MUTAL be the default?
+
+7. Create Authorization Policy
+   - 
+8. Create Peer Authentication Policy
+   -
+9. Create Request Authentication Policy
+   -
    
  In all the above resources, we need to define locked and unlocked attributes. 
  Locked:
@@ -49,13 +63,27 @@
    - Resource name
    - Resource namespace
    - Gateway selector
-   - Published host FQDN
-   - Published port
-   - Published protocol
+   - Published host FQDN spec:servers:hosts:[]
+   - Published port spec:servers:port: name, number, protocol
    - TLS secret
    VirtualService:
    - Resource name
    - Resource namespace
    - Gateway
-   - Host FQDN
-   - 
+   - Hosts FQDN spec:hosts:[]
+   DestinationRule:
+   - Resource name
+   - Resource namespace
+   - Host spec:host
+   - Traffic policy
+
+Customizable:
+  Gateway:
+  - None
+  VirtualService:
+  - spec:http, spec:tcp, spec:tls
+  DestinationRule:
+  - trafficPolicy (should tls be locked?)
+  - subsets
+
+   
