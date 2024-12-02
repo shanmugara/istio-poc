@@ -3,7 +3,7 @@
 ### CedarACL derived intent for Istio: 
 TBD (need to break down the intent and atrributes)
 
-
+### Publishing a basic ingress web application
 1. Deploy the application in kubernetes namespace. (we are injecting istio sidecar in the deployment)
 2. Create a new service for the application.
 3. Istio steps:
