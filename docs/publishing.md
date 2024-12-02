@@ -58,31 +58,43 @@ TBD (need to break down the intent and atrributes)
    -
    
  In all the above resources, we need to define locked and unlocked attributes. 
- Locked:
-   Gateway:
+ **Locked:**
+
+####    Gateway:
+
    - Resource name
    - Resource namespace
    - Gateway selector
    - Published host FQDN spec:servers:hosts:[]
    - Published port spec:servers:port: name, number, protocol
    - TLS secret
-   VirtualService:
+
+####    VirtualService:
+
    - Resource name
    - Resource namespace
    - Gateway
    - Hosts FQDN spec:hosts:[]
-   DestinationRule:
+
+####    DestinationRule:
+
    - Resource name
    - Resource namespace
    - Host spec:host
    - Traffic policy
 
-Customizable:
-  Gateway:
+**Customizable:**
+
+####   Gateway:
+
   - None
-  VirtualService:
+
+####   VirtualService:
+
   - spec:http, spec:tcp, spec:tls
-  DestinationRule:
+
+####   DestinationRule:
+
   - trafficPolicy (should tls be locked?)
   - subsets
 
