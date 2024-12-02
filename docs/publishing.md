@@ -98,4 +98,7 @@ TBD (need to break down the intent and atrributes)
   - trafficPolicy (should tls be locked?)
   - subsets
 
+### How to track policy changes and deletions in CirACL?
+- We need to track the changes in the SPEC controller. Details TBD.
+
    
