@@ -13,46 +13,34 @@ Also note that we are using a pod label spire.io/cluster:istio-d to attest servi
 Create node registrations in our external SPIRE server as follows: 
 
 
-/opt/spire/spire-server entry create \ 
-
-    -spiffeID spiffe://wl.dev.omegaworld.net/ns/spire/sa/spire-agent \ 
-
-    -selector k8s_psat:cluster:istio-d \ 
-
-    -selector k8s_psat:agent_ns:spire \ 
-
-    -selector k8s_psat:agent_sa:spire-agent \ 
-
-    -node \ 
-
+/opt/spire/spire-server entry create \
+    -spiffeID spiffe://wl.dev.omegaworld.net/ns/spire/sa/spire-agent \
+    -selector k8s_psat:cluster:istio-d \
+    -selector k8s_psat:agent_ns:spire \
+    -selector k8s_psat:agent_sa:spire-agent \
+    -node \
     -socketPath /tmp/spire-server/private/api.sock 
 
-  
 
-  
-
-/opt/spire/spire-server entry create \ 
-
-    -spiffeID spiffe://wl.dev.omegaworld.net/ns/istio-system/sa/istio-egressgateway-service-account \ 
-
-    -parentID spiffe://wl.dev.omegaworld.net/ns/spire/sa/spire-agent \ 
-
-    -selector k8s:ns:istio-system \ 
-
-    -selector k8s:sa:istio-egressgateway-service-account \ 
-
+/opt/spire/spire-server entry create \
+    -spiffeID spiffe://wl.dev.omegaworld.net/ns/istio-system/sa/istio-egressgateway-service-account \
+    -parentID spiffe://wl.dev.omegaworld.net/ns/spire/sa/spire-agent \
+    -selector k8s:ns:istio-system \
+    -selector k8s:sa:istio-egressgateway-service-account \
     -selector k8s:pod-label:spire.io/cluster:istio-d 
 
-  
 
-/opt/spire/spire-server entry create \ 
-
-    -spiffeID spiffe://wl.dev.omegaworld.net/ns/istio-system/sa/istio-ingressgateway-service-account \ 
-
-    -parentID spiffe://wl.dev.omegaworld.net/ns/spire/sa/spire-agent \ 
-
-    -selector k8s:ns:istio-system \ 
-
-    -selector k8s:sa:istio-ingressgateway-service-account \ 
-
+/opt/spire/spire-server entry create \
+    -spiffeID spiffe://wl.dev.omegaworld.net/ns/istio-system/sa/istio-ingressgateway-service-account \
+    -parentID spiffe://wl.dev.omegaworld.net/ns/spire/sa/spire-agent \
+    -selector k8s:ns:istio-system \
+    -selector k8s:sa:istio-ingressgateway-service-account \
     -selector k8s:pod-label:spire.io/cluster:istio-d 
+
+
+COPY/PASTE:
+/opt/spire/spire-server entry create -spiffeID spiffe://wl.dev.omegaworld.net/ns/spire/sa/spire-agent -selector k8s_psat:cluster:istio-d -selector k8s_psat:agent_ns:spire -selector k8s_psat:agent_sa:spire-agent -node -socketPath /tmp/spire-server/private/api.sock
+
+/opt/spire/spire-server entry create -spiffeID spiffe://wl.dev.omegaworld.net/ns/istio-system/sa/istio-egressgateway-service-account -parentID spiffe://wl.dev.omegaworld.net/ns/spire/sa/spire-agent -selector k8s:ns:istio-system -selector k8s:sa:istio-egressgateway-service-account -selector k8s:pod-label:spire.io/cluster:istio-d
+
+/opt/spire/spire-server entry create -spiffeID spiffe://wl.dev.omegaworld.net/ns/istio-system/sa/istio-ingressgateway-service-account -parentID spiffe://wl.dev.omegaworld.net/ns/spire/sa/spire-agent -selector k8s:ns:istio-system -selector k8s:sa:istio-ingressgateway-service-account -selector k8s:pod-label:spire.io/cluster:istio-d
