@@ -1,17 +1,17 @@
 1. Create bundle.crt ConfigMap in spire namespace. The ConfigMap is named spire-bundle
 2. Run ./spire-server bundle show > bundle.crt to get the bundle.crt from spire server.
-3. Install spire agent in target cluster.
-4. Install csi driver in target cluster
-5. We shall be using a custon label “spire.io/cluster=istio-d" in pods
-6. Use  istio-spire-config-omega.yaml to install istio in the cluster.
+3. Add the kubeconfig for the cluster in server.conf in spire server, and make sure the kubeconfig is deployed in the path.
+4. Create spire registration for node attestation in the spire server. (see below)
+5. Install spire agent in target cluster.
+6. Install csi driver in target cluster
+7. We shall be using a custom label “spire.io/cluster=istio-d" in pods
+8. Use  istio-spire-config-omega.yaml to install istio in the cluster.
 
 It is very important that all SPIRE components and SPIFFE CSI driver componenets use /run/secrets/workload-spiffe-uds as the UDS path inside the pods. This is required for istio to correctly identify SPIRE socket path.
 Also note that we are using a pod label spire.io/cluster:istio-d to attest service accounts by cluster name.
 
-
 Create node registrations in our external SPIRE server as follows: 
 
- 
 
 /opt/spire/spire-server entry create \ 
 
