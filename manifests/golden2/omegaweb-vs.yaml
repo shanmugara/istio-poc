@@ -1,0 +1,17 @@
+apiVersion: networking.istio.io/v1
+kind: VirtualService
+metadata:
+  name: omegaapp3-vs
+  namespace: istio-system
+spec:
+  hosts:
+  - omegaapp3.omegaworld.net
+  gateways:
+  - omegaapp3-gw
+  http:
+  - match:
+    - uri:
+        prefix: /
+    route:
+    - destination:
+        host: omegaweb.myapp.svc.cluster.local

@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: omegaweb
+  name: omegaweb
+  namespace: myapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: omegaweb
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: omegaweb
+        spiffe.io/cluster: "istio-e"
+        sidecar.istio.io/inject: "true"
+        spiffe.io/spire-managed-identity: "true"
+        omega.k8s.io/managed-csi: "true"
+    spec:
+      serviceAccountName: omegaweb
+      containers:
+      - image: shanmugara/omegaweb-gen:v2
+        name: omegaweb-gen
+        resources: {}
+        ports:
+        - containerPort: 5000
+          protocol: TCP
+        env:
+        - name: SERVER
+          value: ISTIO-E
+status: {}
