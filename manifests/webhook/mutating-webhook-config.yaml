@@ -1,0 +1,45 @@
+apiVersion: admissionregistration.k8s.io/v1
+kind: MutatingWebhookConfiguration
+metadata:
+  name: "csi-injector-webhook.omegahome.net"
+webhooks:
+  - name: "csi-injector.spire.svc.cluster.local"
+    namespaceSelector:
+      matchLabels:
+        csi-webhook: enabled
+    rules:
+      - apiGroups: [""]
+        apiVersions: ["v1"]
+        operations: ["CREATE"]
+        resources: ["pods"]
+        scope: "*"
+    clientConfig:
+      service:
+        namespace: spire
+        name: csi-injector
+        path: /mutate
+        port: 8443
+      caBundle: |
+        LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURCVENDQWUyZ0F3SUJBZ0lJZjduUDFRZm5I
+        TFl3RFFZSktvWklodmNOQVFFTEJRQXdGVEVUTUJFR0ExVUUKQXhNS2EzVmlaWEp1WlhSbGN6QWVG
+        dzB5TlRBek1ESXlNRE0zTkRWYUZ3MHpOVEF5TWpneU1EUXlORFZhTUJVeApFekFSQmdOVkJBTVRD
+        bXQxWW1WeWJtVjBaWE13Z2dFaU1BMEdDU3FHU0liM0RRRUJBUVVBQTRJQkR3QXdnZ0VLCkFvSUJB
+        UURjQUdkeVZrRTIzMVhSTUUwS3ZDTGFWbHpBcGFhZ2VDUkc3MFlHVFIrZTJNc0ovTkJwOEVqcWpj
+        dEkKYVJ1ZVN6RXpRU1JUTWcydllqbmxtVy9ZNHZYS2pFZ0NQbVlUYWxBZnVoVCtZbGlTbU5HMVFO
+        SThHbEJkOG5tQQo1MG5FNnV4YUdUaWhwRjlxU0hqc2E1dndaZXdzOU1tcVVYY0dwc1hhZE1CZkRO
+        c0E5eEZaOEFZOHZEem8wNCtECkVGTURGN1B3cjc4RHpXY25peHk5eUVid3VrMnVRUkE2N3FQZHJY
+        L2xieWlFaHhTZEU3OGZUanB1YitFQnFQaE0KV2l0OEJScnc5dW1NTzRIc05IQnJEU2RZTzl4UDRm
+        citHNjlKRkZpMzBISDR6WUt4YWt1MTl5YitvOEtGREQxUwpOdUlGbFAzQXltajlxc3pKUXFDOGdP
+        aVNZYlA3QWdNQkFBR2pXVEJYTUE0R0ExVWREd0VCL3dRRUF3SUNwREFQCkJnTlZIUk1CQWY4RUJU
+        QURBUUgvTUIwR0ExVWREZ1FXQkJTRmZIYXhsQXBwQlhCR3FoTnc1a1EwNkVYdTNUQVYKQmdOVkhS
+        RUVEakFNZ2dwcmRXSmxjbTVsZEdWek1BMEdDU3FHU0liM0RRRUJDd1VBQTRJQkFRQ0Vua0NOdU82
+        bwpkb3czQ25FMzhuMXFWV0w5TlQxQUVSNmJGbm5uWmJ6UXUvYmExMjVUZEttWW9iOWI2SEpEWWUv
+        SlJLVlZGWXZtCnJBam1YM2MveWl1R0FYNkN0aWc4c0Q0T29WREZsUnZiRVhaS2pGVXVxcGNFWXNl
+        TjlBc1Y0SENLekRoVUVoOTcKQnZUSVIwdmtuVVB0dXN4MUdUNUg1YXhuWDRsOHpDeUJoWkZlcWhH
+        QTJQQy9ObXlDaTFYTElxZXFPMmhWY0xVVgpOZ3pDTmlyV1pYNDlHT1VpaGpQTVllS3Z4S2RZWkZR
+        QWxJV0RHZVVmdTU5K1RLM0UrTlhBd2gvZ3BqY2lIWUsxCjNGZ0pTa0lHZThtVXFxT2NBRkVHVkdY
+        bW5XUDVDb3hFNzZiTjRCYVpZT0tDZGl2eDNzNFBMbDQ3ZmR3VWtQOTMKWFU0c3FITlB3VTd4Ci0t
+        LS0tRU5EIENFUlRJRklDQVRFLS0tLS0K
+    admissionReviewVersions: ["v1"]
+    sideEffects: None
+    timeoutSeconds: 2

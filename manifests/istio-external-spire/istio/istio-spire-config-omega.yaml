@@ -10,6 +10,7 @@ spec:
       mode: REGISTRY_ONLY
   values:
     global:
+      imagePullSecrets: []
     # This is used to customize the sidecar template
     sidecarInjectorWebhook:
       templates:
@@ -33,7 +34,7 @@ spec:
         label:
           istio: ingressgateway
           spiffe.io/spire-managed-identity: "true"
-          spiffe.io/cluster: "istio-d"
+          spiffe.io/cluster: "istio-e"
         k8s:
           overlays:
             - apiVersion: apps/v1
@@ -78,7 +79,7 @@ spec:
         label:
           istio: egressgateway
           spiffe.io/spire-managed-identity: "true"
-          spiffe.io/cluster: "istio-d"
+          spiffe.io/cluster: "istio-e"
         k8s:
           overlays:
             - apiVersion: apps/v1

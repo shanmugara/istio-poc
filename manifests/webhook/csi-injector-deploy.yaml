@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: csi-injector
+  name: csi-injector
+  namespace: spire
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: csi-injector
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: csi-injector
+    spec:
+      containers:
+      - image: shanmugara/spiffe-csi-injector:v2
+        name: spiffe-csi-injector
+        resources: {}
+        env:
+        - name: "TLS_ENABLED"
+          value: "true"
+        volumeMounts:
+        - name: tls
+          mountPath: /etc/webhook/certs
+          readOnly: true
+        ports:
+        - containerPort: 8443
+          name: https
+          protocol: TCP
+        - containerPort: 8080
+          name: http
+          protocol: TCP
+      volumes:
+      - secret:
+          secretName: csi-injector-tls
+        name: tls
+      
+status: {}
