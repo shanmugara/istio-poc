@@ -1,3 +1,15 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: myapp
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: omegaweb
+  namespace: myapp
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -17,10 +29,10 @@ spec:
       creationTimestamp: null
       labels:
         app: omegaweb
-        spiffe.io/cluster: "istio-e"
-        sidecar.istio.io/inject: "true"
-        spiffe.io/spire-managed-identity: "true"
-        omega.k8s.io/managed-csi: "true"
+        #spiffe.io/cluster: "istio-e"
+        #sidecar.istio.io/inject: "true"
+        #spiffe.io/spire-managed-identity: "true"
+        #omega.k8s.io/managed-csi: "true"
     spec:
       serviceAccountName: omegaweb
       containers:
@@ -32,5 +44,7 @@ spec:
           protocol: TCP
         env:
         - name: SERVER
-          value: ISTIO-E
+          valueFrom:
+            fieldRef:
+              fieldPath: spec.nodeName
 status: {}
