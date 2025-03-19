@@ -6,6 +6,19 @@ metadata:
 spec:
   gatewayClassName: istio
   listeners:
+  - protocol: HTTPS
+    hostname: omegaweb-amb-a.omegaworld.net
+    port: 443
+    name: omegaweb-https
+    tls:
+      mode: Terminate
+      certificateRefs:
+      - name: omegaweb-tls
+        kind: Secret
+        namespace: istio-system
+    allowedRoutes:
+      namespaces:
+        from: Same
   - protocol: HTTP
     hostname: omegaweb-amb-a.omegaworld.net
     port: 80
