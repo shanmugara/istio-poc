@@ -1,0 +1,17 @@
+apiVersion: install.istio.io/v1alpha1
+kind: IstioOperator
+spec:
+  meshConfig:
+    trustDomain: wl.dev.omegaworld.net
+    outboundTrafficPolicy:
+      mode: REGISTRY_ONLY      
+  components:
+    cni:
+      enabled: true
+    ztunnel:
+      enabled: true
+    ingressGateways:
+    - name: istio-ingressgateway
+      enabled: false
+  values:
+    profile: ambient
