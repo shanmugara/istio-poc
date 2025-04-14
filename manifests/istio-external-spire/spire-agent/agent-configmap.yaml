@@ -11,7 +11,8 @@ data:
       server_address = "omegaspire01.omegaworld.net"
       server_port = "8081"
       socket_path = "/run/secrets/workload-spiffe-uds/socket"
-      trust_bundle_path = "/run/spire/bundle/bundle.crt"
+      # trust_bundle_path = "/run/spire/bundle/bundle.crt"
+      trust_bundle_url = "https://omegaspire01.omegaworld.net/bundle.crt"
       trust_domain = "wl.dev.omegaworld.net"
     }
 
