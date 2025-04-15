@@ -3,3 +3,5 @@ kind: ServiceAccount
 metadata:
   name: spire-agent
   namespace: spire
+  annotations:
+     omegahome.net/managed-spire: "true"
