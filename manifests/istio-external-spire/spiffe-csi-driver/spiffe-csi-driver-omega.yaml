@@ -25,6 +25,10 @@ spec:
       labels:
         app: spiffe-csi-driver
     spec:
+      tolerations:
+        - key: "node-role.kubernetes.io/control-plane"
+          effect: "NoSchedule"
+          operator: "Exists"
       serviceAccountName: spiffe-csi-driver
       containers:
         # This is the container which runs the SPIFFE CSI driver.
