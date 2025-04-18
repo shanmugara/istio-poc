@@ -1,3 +1,4 @@
+
 1. Create bundle.crt ConfigMap in spire namespace. The ConfigMap is named spire-bundle
 2. Run ./spire-server bundle show > bundle.crt to get the bundle.crt from spire server.
 3. Add the kubeconfig for the cluster in server.conf in spire server, and make sure the kubeconfig is deployed in the path.

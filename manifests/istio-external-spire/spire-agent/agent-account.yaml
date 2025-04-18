@@ -4,4 +4,4 @@ metadata:
   name: spire-agent
   namespace: spire
   annotations:
-     omegahome.net/managed-spire: "true"
+    omegahome.net/managed-spire: "true"

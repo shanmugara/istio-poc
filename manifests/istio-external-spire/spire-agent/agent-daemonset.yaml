@@ -32,7 +32,7 @@ spec:
           - --verbose
       containers:
         - name: spire-agent
-          image: ghcr.io/spiffe/spire-agent:1.12.0
+          image: shanmugara/spire-agent:v1.12.0-rev0
           args: ["-config", "/run/spire/config/agent.conf"]
           env:
           - name: MY_NODE_NAME
