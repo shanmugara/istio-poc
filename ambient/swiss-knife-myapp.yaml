@@ -5,10 +5,7 @@ metadata:
   namespace: myapp
   labels:
     app: swiss
-    sidecar.istio.io/inject: "true"
-    spiffe.io/spire-managed-identity: "true"
-  annotations:
-    inject.istio.io/templates: "sidecar,spire"
+    omega.k8s.io/managed-csi: "true"
 spec:
   serviceAccountName: swissknife
   containers:

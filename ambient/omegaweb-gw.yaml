@@ -7,7 +7,7 @@ spec:
   gatewayClassName: istio
   listeners:
   - protocol: HTTPS
-    hostname: omegaweb-amb-a.omegaworld.net
+    hostname: omegaweb-amb-b.omegaworld.net
     port: 443
     name: omegaweb-https
     tls:
@@ -20,7 +20,7 @@ spec:
       namespaces:
         from: Same
   - protocol: HTTP
-    hostname: omegaweb-amb-a.omegaworld.net
+    hostname: omegaweb-amb-b.omegaworld.net
     port: 80
     name: omegaweb-http
     allowedRoutes:
