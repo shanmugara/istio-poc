@@ -9,6 +9,8 @@ kind: ServiceAccount
 metadata:
   name: omegaweb
   namespace: myapp
+  annotations:
+    omegahome.net/managed-spire: "true"
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -27,12 +29,14 @@ spec:
   template:
     metadata:
       creationTimestamp: null
+      annotations:
+        omegahome.net/managed-csi: "true"
       labels:
         app: omegaweb
         #spiffe.io/cluster: "istio-e"
         #sidecar.istio.io/inject: "true"
         #spiffe.io/spire-managed-identity: "true"
-        #omega.k8s.io/managed-csi: "true"
+        omega.k8s.io/managed-csi: "true"
     spec:
       serviceAccountName: omegaweb
       containers:
@@ -48,3 +52,23 @@ spec:
             fieldRef:
               fieldPath: spec.nodeName
 status: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    app: omegaweb
+  name: omegaweb
+  namespace: myapp
+spec:
+  ports:
+  - name: 5000-5000
+    port: 5000
+    protocol: TCP
+    targetPort: 5000
+  selector:
+    app: omegaweb
+  type: ClusterIP
+status:
+  loadBalancer: {}

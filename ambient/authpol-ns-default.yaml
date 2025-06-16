@@ -1,0 +1,11 @@
+apiVersion: security.istio.io/v1
+kind: AuthorizationPolicy
+metadata:
+  name: allow-waypoint
+  namespace: istio-system
+spec:
+  action: ALLOW
+  rules:
+  - from:
+    - source:
+        principals: ["spiffe://wl.dev.omegaworld.net/ns/istio-system/sa/waypoint"]
