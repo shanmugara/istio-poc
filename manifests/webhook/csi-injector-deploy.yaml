@@ -19,7 +19,7 @@ spec:
         app: csi-injector
     spec:
       containers:
-      - image: shanmugara/spiffe-csi-injector:v2
+      - image: shanmugara/spiffe-csi-injector:v2.0.12
         name: spiffe-csi-injector
         resources: {}
         env:

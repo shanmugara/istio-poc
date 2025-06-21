@@ -2,7 +2,7 @@ apiVersion: networking.istio.io/v1
 kind: ServiceEntry
 metadata:
   name: proxy-se
-  namespace: istio-system
+  namespace: istio-egress
 spec:
   hosts:
   - squid-a-01.omegaworld.net 

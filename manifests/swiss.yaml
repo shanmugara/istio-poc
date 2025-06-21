@@ -2,9 +2,15 @@ apiVersion: v1
 kind: Pod
 metadata:
   name: swiss-knife
-  namespace: default
+  namespace: myapp
   labels:
     app: swiss
+    omega.k8s.io/managed-csi: "true"
+    sidecar.istio.io/inject: "true"
+    spiffe.io/cluster: istio-e.omegaworld.net
+    spiffe.io/spire-managed-identity: "true"
+  annotations:
+    omegahome.net/managed-csi: "true"
 spec:
   containers:
   - name: swiss-knife
@@ -20,3 +26,4 @@ spec:
       limits:
         memory: "128Mi"
         cpu: "500m"
+  serviceAccountName: swissknife

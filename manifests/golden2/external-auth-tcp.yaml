@@ -2,7 +2,7 @@ apiVersion: security.istio.io/v1
 kind: AuthorizationPolicy
 metadata:
   name: egress-auth-tcp
-  namespace: istio-system
+  namespace: istio-egress
 spec:
   selector:
     matchLabels:
@@ -16,27 +16,27 @@ spec:
       - "omegaapp-2.omegaworld.net"
     - key: source.principal
       values:
-      - "istio-b.omegaworld.net/ns/default/sa/sleep"
-      - "istio-b.omegaworld.net/ns/default/sa/swissknife"
+      - "wl.dev.omegaworld.net/ns/myapp/sa/sleep"
+      - "wl.dev.omegaworld.net/ns/myapp/sa/swissknife"
   - when:
     - key: connection.sni
       values: 
       - "www.google.com"
     - key: source.principal
       values: 
-      - "istio-b.omegaworld.net/ns/myapp/sa/swissknife"
+      - "wl.dev.omegaworld.net/ns/myapp/sa/swissknife"
   - when:
     - key: connection.sni
       values:
       - "mysql-a.omegaworld.net"
     - key: source.principal
       values:
-      - "istio-b.omegaworld.net/ns/default/sa/mysql-client"
+      - "wl.dev.omegaworld.net/ns/myapp/sa/mysql-client"
   - when:
     - key: connection.sni
       values:
       - "omega-mysql-1.omegaworld.net"
     - key: source.principal
       values:
-      - "istio-b.omegaworld.net/ns/default/sa/mysql-client"
+      - "wl.dev.omegaworld.net/ns/myapp/sa/mysql-client"
   action: ALLOW

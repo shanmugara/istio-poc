@@ -2,9 +2,9 @@ apiVersion: networking.istio.io/v1
 kind: DestinationRule
 metadata:
   name: egressgateway
-  namespace: istio-system
+  namespace: istio-egress
 spec:
-  host: istio-egressgateway.istio-system.svc.cluster.local
+  host: istio-egressgateway.istio-egress.svc.cluster.local
   subsets:
   - name: httpbin-eg-http
     trafficPolicy:
