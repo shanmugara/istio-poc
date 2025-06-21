@@ -45,3 +45,10 @@ COPY/PASTE:
 /opt/spire/spire-server entry create -spiffeID spiffe://wl.dev.omegaworld.net/ns/istio-system/sa/istio-egressgateway-service-account -parentID spiffe://wl.dev.omegaworld.net/ns/spire/sa/spire-agent -selector k8s:ns:istio-system -selector k8s:sa:istio-egressgateway-service-account -selector k8s:pod-label:spiffe.io/cluster:istio-d
 
 /opt/spire/spire-server entry create -spiffeID spiffe://wl.dev.omegaworld.net/ns/istio-system/sa/istio-ingressgateway-service-account -parentID spiffe://wl.dev.omegaworld.net/ns/spire/sa/spire-agent -selector k8s:ns:istio-system -selector k8s:sa:istio-ingressgateway-service-account -selector k8s:pod-label:spiffe.io/cluster:istio-d
+
+
+ENABLING ISTIO ACCESS LOGGING:
+spec:
+  meshConfig:
+    accessLogFile: /dev/stdout
+
