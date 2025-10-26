@@ -2,7 +2,7 @@ apiVersion: networking.istio.io/v1
 kind: DestinationRule
 metadata:
   name: squid-proxy
-  namespace: istio-system
+  namespace: istio-egress
 spec:
   host: squid-a-01.omegaworld.net 
   subsets:

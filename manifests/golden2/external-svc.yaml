@@ -2,9 +2,7 @@ apiVersion: networking.istio.io/v1
 kind: ServiceEntry
 metadata:
   name: external-sites
-  namespace: istio-system
-  labels:
-    istio.io/use-waypoint: waypoint
+  namespace: istio-egress
 spec:
   hosts:
   - www.httpbin.org

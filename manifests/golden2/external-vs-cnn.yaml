@@ -2,7 +2,7 @@ apiVersion: networking.istio.io/v1
 kind: VirtualService
 metadata:
   name: cnn-vs
-  namespace: istio-system
+  namespace: istio-egress
 spec:
   hosts:
   - www.cnn.com
@@ -27,7 +27,7 @@ spec:
       port: 80
     route:  
     - destination:
-        host: istio-egressgateway.istio-system.svc.cluster.local
+        host: istio-egressgateway.istio-egress.svc.cluster.local
         port:
           number: 80
         subset: cnn-eg
@@ -41,7 +41,7 @@ spec:
       - www.cnn.com
     route:
     - destination:
-        host: istio-egressgateway.istio-system.svc.cluster.local
+        host: istio-egressgateway.istio-egress.svc.cluster.local
         port:
           number: 443
         subset: cnn-eg
