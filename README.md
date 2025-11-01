@@ -27,3 +27,20 @@ kubectl apply -f spire-quickstart.yaml
 kubectl apply -f spire-agent/
 
 ```
+5. install `cert-manager` with the following command:
+```bash
+helm install cert-manager oci://quay.io/jetstack/charts/cert-manager -n cert-manager --create-namespace --set crds.enabled=true
+```
+6. install `omega-issuer` Helm chart with the following command:
+```bash
+helm install omega-issuer oci://docker.io/shanmugara/omega-issuer --version 0.0.2 -n cert-manager
+``` 
+7. Crete the `OmegaIssuer` resource with the following command:
+```bash
+kubectl apply -f manifests/omega-issuer/omega-cluster-issuer.yaml -n cert-manager
+```
+8. Create a certificate resource for istio ingress gateway with the following command:
+```bash
+kubectl apply -f  manifests/omega-issuer/omegaapp3-cert.yaml -n istio-system
+```
+
