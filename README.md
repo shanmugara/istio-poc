@@ -3,7 +3,7 @@ Istio poc cases
 
 ## Istio Installation
 
-1. /istio/samples/security/spire contains the istio-spire-config-omega.yaml and other omega files.
+1. `/istio/samples/security/spire` contains the `istio-spire-config-omega.yaml` and other omega files.
 2. use `istioctl` or `helm`  to install istio with the following command:
 ```bash
 istioctl install -f istio-spire-config-omega.yaml
