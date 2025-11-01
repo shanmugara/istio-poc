@@ -1,0 +1,10 @@
+apiVersion: omega-issuer.omegahome.net/v1alpha1
+kind: OmegaClusterIssuer
+metadata:
+  labels:
+    app.kubernetes.io/name: omega-cluster-issuer
+  name: omega-cluster-issuer
+  namespace: cert-manager
+spec:
+  url: https://omegaspire01.omegaworld.net:8082/v1/cert/request
+  spireAuth: true

@@ -1,0 +1,16 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: omegaapp3
+  namespace: istio-ingress
+spec:
+  commonName: omegaapp3.omegahome.net
+  secretName: omegaapp3.omegahome.net
+  issuerRef:
+    name: omega-cluster-issuer
+    group: omega-issuer.omegahome.net
+    kind: OmegaClusterIssuer
+  usages:
+    - digital signature
+    - key encipherment
+    - server auth
