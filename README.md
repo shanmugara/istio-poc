@@ -8,12 +8,10 @@ Istio poc cases
 ```bash
 istioctl install -f istio-spire-config-omega.yaml
 ```
+**OR with helm:**
+
 - Helm values are under `helm/values` path.
-
-
 - Use the appropriate values file to install istio with helm.
-
-
 - Make sure to change the values according to your environment.
 
 3. install csi driver with the following command:
