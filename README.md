@@ -29,7 +29,7 @@ kubectl apply -f spire-quickstart.yaml
 kubectl apply -f manifests/istio-external-spire/spire-agent/
 ```
 
-5. Install `spire-registarar` with the Helm chart with the following command:
+5. Install `spire-registrar` with the Helm chart with the following command:
 ```bash
 helm install spirereg -n spire oci://docker.io/shanmugara/spire-registrar --version 1.0.9
 ````
