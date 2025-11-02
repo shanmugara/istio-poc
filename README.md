@@ -18,28 +18,37 @@ istioctl install -f istio-spire-config-omega.yaml
 ```bash
 kubectl apply -f spire-csi-driver-omega.yaml
 ```
-3. install the spire server and agent with the following command:
+3. (OPTIONAL) install the spire server and agent with the following command:
 ```bash
 kubectl apply -f spire-quickstart.yaml
 ```
-4. install the spire agent with the following command. look at the files under spire-agent/ for more details.:
-```bash
-kubectl apply -f spire-agent/
+4. Install the spire agent with the following command:
 
+**For external spire**, use the manifests under `manifests/istio-external-spire/spire-agent/`
+```bash
+kubectl apply -f manifests/istio-external-spire/spire-agent/
 ```
-5. install `cert-manager` with the following command:
+
+5. Install `spire-registarar` with the Helm chart with the following command:
+```bash
+helm install spirereg -n spire oci://docker.io/shanmugara/spire-registrar --version 1.0.9
+````
+6. install `cert-manager` with the following command:
 ```bash
 helm install cert-manager oci://quay.io/jetstack/charts/cert-manager -n cert-manager --create-namespace --set crds.enabled=true
 ```
-6. install `omega-issuer` Helm chart with the following command:
+```bash
+kubectl label ns cert-manager csi-webhook=enabled
+```
+7. install `omega-issuer` Helm chart with the following command:
 ```bash
 helm install omega-issuer oci://docker.io/shanmugara/omega-issuer --version 0.0.2 -n cert-manager
 ``` 
-7. Crete the `OmegaIssuer` resource with the following command:
+8. Crete the `OmegaIssuer` resource with the following command:
 ```bash
 kubectl apply -f manifests/omega-issuer/omega-cluster-issuer.yaml -n cert-manager
 ```
-8. Create a certificate resource for istio ingress gateway with the following command:
+9. Create a certificate resource for istio ingress gateway with the following command:
 ```bash
 kubectl apply -f  manifests/omega-issuer/omegaapp3-cert.yaml -n istio-system
 ```
