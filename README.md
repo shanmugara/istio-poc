@@ -52,4 +52,7 @@ kubectl apply -f manifests/omega-issuer/omega-cluster-issuer.yaml -n cert-manage
 ```bash
 kubectl apply -f  manifests/omega-issuer/omegaapp3-cert.yaml -n istio-system
 ```
-
+10. Install `trust-manager` with the following command:
+```bash
+helm install trust-manager oci://quay.io/jetstack/charts/trust-manager --namespace cert-manager
+```
