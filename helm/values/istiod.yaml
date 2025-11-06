@@ -1,0 +1,19 @@
+---
+serviceAccountAnnotations:
+    omegahome.net/managed-spire: "true"
+
+meshConfig:
+    enablePrometheusMerge: true
+    accessLogFile: /dev/stdout
+    trustDomain: wl.dev.omegaworld.net
+    outboundTrafficPolicy:
+      mode: REGISTRY_ONLY
+
+global:
+    # OmegaWorld custom global settings
+    csiVolumeInject: true
+    # Used to locate istiod.
+    istioNamespace: istio-system
+
+podLabels:
+    spiffe.io/cluster: "istio-e.omegaworld.net"

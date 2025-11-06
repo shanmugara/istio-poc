@@ -56,3 +56,9 @@ kubectl apply -f  manifests/omega-issuer/omegaapp3-cert.yaml -n istio-system
 ```bash
 helm install trust-manager oci://quay.io/jetstack/charts/trust-manager --namespace cert-manager
 ```
+
+# 1.27.0 Istio changes
+- 1.27.0 uses native mode side car injection. As a result spire and side templates are no longer supported.
+- values.global.proxy.enableNativeSidecars=true is the default.
+- Setting values.global.proxy.enableNativeSidecars=false will enable lgacy mode side car injection
+- In the istiod values.yaml make sure to remove templates ["sidecar", "spire"].

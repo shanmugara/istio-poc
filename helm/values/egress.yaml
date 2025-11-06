@@ -1,0 +1,11 @@
+---
+labels:
+  app: istio-egressgateway
+  spiffe.io/cluster: "istio-e.omegaworld.net"
+
+podAnnotations:
+  sidecar.istio.io/inject: "false"
+
+serviceAccount:
+  annotations:
+    omegahome.net/managed-spire: "true"
