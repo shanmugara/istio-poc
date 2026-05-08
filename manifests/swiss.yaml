@@ -1,3 +1,12 @@
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: swissknife
+  namespace: myapp
+  annotations:
+    omegahome.net/managed-spire: "true"
+---
 apiVersion: v1
 kind: Pod
 metadata:
@@ -7,7 +16,7 @@ metadata:
     app: swiss
     omega.k8s.io/managed-csi: "true"
     sidecar.istio.io/inject: "true"
-    spiffe.io/cluster: istio-e.omegaworld.net
+    spiffe.io/cluster: istio-g.omegaworld.net
     spiffe.io/spire-managed-identity: "true"
   annotations:
     omegahome.net/managed-csi: "true"

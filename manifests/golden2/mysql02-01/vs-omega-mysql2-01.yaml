@@ -1,13 +1,13 @@
 apiVersion: networking.istio.io/v1
 kind: VirtualService
 metadata:
-  name: mysql2-vs
+  name: omega-mysql2-01
   namespace: istio-egress
 spec:
   hosts:
-  - omega-mysql-1.omegaworld.net
+  - omega-mysql2-01.omegaworld.net
   gateways:
-  - external-egress-mysql2
+  - egress-omega-mysql2-01
   - mesh
   tcp:
   - match:
@@ -19,17 +19,16 @@ spec:
         host: istio-egressgateway.istio-egress.svc.cluster.local
         port:
           number: 443
-        subset: mysql2-eg
+        subset: omega-mysql2-01-tls
       weight: 100
-
   - match:
     - gateways:
-      - external-egress-mysql2
+      - egress-omega-mysql2-01
       port: 443
     route:
     - destination:
-        host: omega-mysql-1.omegaworld.net
+        host: omega-mysql2-01.omegaworld.net
         port:
           number: 3306
-        subset: mysql-tcp
+        subset: omega-mysql2-01-tcp
       weight: 100

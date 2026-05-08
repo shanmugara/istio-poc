@@ -1,7 +1,7 @@
 apiVersion: networking.istio.io/v1
 kind: Gateway
 metadata:
-  name: external-egress-mysql2
+  name: egress-tcp-test-02
   namespace: istio-egress
 spec:
   selector:
@@ -12,6 +12,6 @@ spec:
       name: tls-port
       protocol: TLS
     hosts:
-    - 'omega-mysql-1.omegaworld.net'
+    - 'tcp-test-02.omegaworld.net'
     tls:
       mode: ISTIO_MUTUAL

@@ -12,7 +12,7 @@ _internal_defaults_do_not_set:
     istioNamespace: istio-system
   podLabels:
       spiffe.io/spire-managed-identity: "true"
-      spiffe.io/cluster: "istio-e.omegaworld.net"
+      spiffe.io/cluster: "istio-g.omegaworld.net"
   meshConfig:
     accessLogFile: /dev/stdout
     trustDomain: wl.dev.omegaworld.net

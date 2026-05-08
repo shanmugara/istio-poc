@@ -101,7 +101,7 @@ _internal_defaults_do_not_set:
   # Additional labels to apply on the pod level for monitoring and logging configuration.
   podLabels:
     spiffe.io/spire-managed-identity: "true"
-    spiffe.io/cluster: "istio-e.omegaworld.net"
+    spiffe.io/cluster: "istio-g.omegaworld.net"
 
   # Setup how istiod Service is configured. See https://kubernetes.io/docs/concepts/services-networking/dual-stack/#services
   ipFamilyPolicy: ""

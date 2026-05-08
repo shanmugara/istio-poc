@@ -1,16 +1,15 @@
 apiVersion: networking.istio.io/v1
 kind: ServiceEntry
 metadata:
-  name: external-mysql
-  namespace: istio-system
+  name: mysql-1
+  namespace: istio-egress
 spec:
   hosts:
-  - mysql-a.omegaworld.net
+  - omega-mysql-1.omegaworld.net
   endpoints:
-  - address: 192.168.0.145
-  - address: 192.168.0.190
+  - address: 192.168.0.115
   addresses:
-  - 192.168.0.0/24
+  - 192.168.0.115/32
   ports:
   - number: 3306
     name: tcp-port-mesh

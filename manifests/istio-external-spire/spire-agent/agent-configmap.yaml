@@ -20,7 +20,7 @@ data:
       NodeAttestor "k8s_psat" {
         plugin_data {
           # NOTE: Change this to your cluster name
-          cluster = "istio-e.omegaworld.net"
+          cluster = "istio-g.omegaworld.net"
         }
       }
 

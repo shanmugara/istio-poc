@@ -33,10 +33,9 @@ spec:
         omegahome.net/managed-csi: "true"
       labels:
         app: omegaweb
-        #spiffe.io/cluster: "istio-e"
-        #sidecar.istio.io/inject: "true"
-        #spiffe.io/spire-managed-identity: "true"
-        omega.k8s.io/managed-csi: "true"
+        spiffe.io/cluster: "istio-g.omegaworld.net"
+        sidecar.istio.io/inject: "true"
+        spiffe.io/spire-managed-identity: "true"
     spec:
       serviceAccountName: omegaweb
       containers:

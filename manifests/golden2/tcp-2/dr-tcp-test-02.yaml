@@ -1,12 +1,12 @@
 apiVersion: networking.istio.io/v1
 kind: DestinationRule
 metadata:
-  name: mysql-a 
-  namespace: istio-system
+  name: tcp-test-02
+  namespace: istio-egress
 spec:
-  host: mysql-a.omegaworld.net 
+  host: tcp-test-02.omegaworld.net 
   subsets:
-  - name: mysql-tcp
+  - name: tcp-test-02-tcp
     trafficPolicy:
       outlierDetection:
         splitExternalLocalOriginErrors: true

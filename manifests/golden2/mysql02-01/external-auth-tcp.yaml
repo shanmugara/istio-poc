@@ -41,15 +41,8 @@ spec:
   - when:
     - key: connection.sni
       values:
-      - "tcp-test-01.omegaworld.net"
+      - "omega-mysql2-01.omegaworld.net"
     - key: source.principal
       values:
-      - "wl.dev.omegaworld.net/ns/myapp/sa/tcp-client"
-  - when:
-    - key: connection.sni
-      values:
-      - "tcp-test-02.omegaworld.net"
-    - key: source.principal
-      values:
-      - "wl.dev.omegaworld.net/ns/myapp/sa/tcp-client"
+      - "wl.dev.omegaworld.net/ns/myapp/sa/mysql-client"  
   action: ALLOW

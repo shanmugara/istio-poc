@@ -22,7 +22,7 @@ _internal_defaults_do_not_set:
         app: istio-egressgateway
         istio: egressgateway
         spiffe.io/spire-managed-identity: "true"
-        spiffe.io/cluster: "istio-e.omegaworld.net"
+        spiffe.io/cluster: "istio-g.omegaworld.net"
 
       # Scalability tuning
       # replicaCount: 1

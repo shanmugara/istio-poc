@@ -12,7 +12,7 @@ _internal_defaults_do_not_set:
         app: istio-ingressgateway
         istio: ingressgateway
         spiffe.io/spire-managed-identity: "true"
-        spiffe.io/cluster: "istio-e.omegaworld.net"
+        spiffe.io/cluster: "istio-g.omegaworld.net"
         sidecar.istio.io/inject: "false"
       ports:
       ## You can add custom gateway ports in user values overrides, but it must include those ports since helm replaces.
