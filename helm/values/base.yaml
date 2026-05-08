@@ -1,0 +1,3 @@
+---
+serviceAccountAnnotations:
+    omegahome.net/managed-spire: "true"
