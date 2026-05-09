@@ -1,0 +1,19 @@
+apiVersion: networking.istio.io/v1
+kind: ServiceEntry
+metadata:
+  name: tcp-test-03
+  namespace: istio-egress
+spec:
+  hosts:
+  - tcp-test-03.omegaworld.net
+  endpoints:
+  - address: tcp-test-03.omegaworld.net
+  ports:
+  - number: 9000
+    name: tcp-port-mesh
+    protocol: TCP
+  - number: 443
+    name: tls-port-egress
+    protocol: TLS
+  resolution: DNS
+  location: MESH_EXTERNAL

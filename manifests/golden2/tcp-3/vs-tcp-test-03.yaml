@@ -1,0 +1,34 @@
+apiVersion: networking.istio.io/v1
+kind: VirtualService
+metadata:
+  name: tcp-test-03
+  namespace: istio-egress
+spec:
+  hosts:
+  - tcp-test-03.omegaworld.net
+  gateways:
+  - egress-tcp-test-03
+  - mesh
+  tcp:
+  - match:
+    - gateways:
+      - mesh
+      port: 9000
+    route:
+    - destination:
+        host: istio-egressgateway.istio-egress.svc.cluster.local
+        port:
+          number: 443
+        subset: tcp-test-03-tls
+      weight: 100
+  - match:
+    - gateways:
+      - egress-tcp-test-03
+      port: 443
+    route:
+    - destination:
+        host: tcp-test-03.omegaworld.net
+        port:
+          number: 9000
+        subset: tcp-test-03-tcp
+      weight: 100

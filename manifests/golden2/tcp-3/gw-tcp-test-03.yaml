@@ -1,0 +1,17 @@
+apiVersion: networking.istio.io/v1
+kind: Gateway
+metadata:
+  name: egress-tcp-test-03
+  namespace: istio-egress
+spec:
+  selector:
+    istio: egressgateway
+  servers:
+  - port:
+      number: 443
+      name: tls-port
+      protocol: TLS
+    hosts:
+    - 'tcp-test-03.omegaworld.net'
+    tls:
+      mode: ISTIO_MUTUAL

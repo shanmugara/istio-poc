@@ -1,0 +1,18 @@
+apiVersion: security.istio.io/v1
+kind: AuthorizationPolicy
+metadata:
+  name: auth-tcp-test-01
+  namespace: istio-egress
+spec:
+  action: ALLOW
+  rules:
+  - when:
+    - key: connection.sni
+      values:
+      - tcp-test-01.omegaworld.net
+    - key: source.principal
+      values:
+      - wl.dev.omegaworld.net/ns/myapp/sa/tcp-client
+  selector:
+    matchLabels:
+      istio: egressgateway

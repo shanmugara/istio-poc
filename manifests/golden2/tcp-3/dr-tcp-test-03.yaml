@@ -1,0 +1,24 @@
+apiVersion: networking.istio.io/v1
+kind: DestinationRule
+metadata:
+  name: tcp-test-03
+  namespace: istio-egress
+spec:
+  host: tcp-test-03.omegaworld.net 
+  subsets:
+  - name: tcp-test-03-tcp
+    trafficPolicy:
+      outlierDetection:
+        splitExternalLocalOriginErrors: true
+        consecutiveLocalOriginFailures: 1
+        consecutiveGatewayErrors: 1
+        consecutive5xxErrors: 1
+        interval: 5s
+        baseEjectionTime: 5m
+        maxEjectionPercent: 60
+      loadBalancer:
+        simple: LEAST_REQUEST
+      connectionPool:
+        tcp:
+          maxConnections: 100
+          connectTimeout: 10s
